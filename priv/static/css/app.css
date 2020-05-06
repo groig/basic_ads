@@ -1,0 +1,58 @@
+@import './picnic.css';
+
+nav {
+  background-color: #f0f0f0;
+}
+
+main {
+  margin: 4em auto 0;
+  padding: 1em;
+  padding-top: 2em;
+}
+
+.grid {
+  margin: 0;
+}
+
+fieldset.grid {
+  margin-bottom: 2em;
+}
+
+.drop-element{
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.category-element {
+  background-color: #f2f2f2;
+  margin-left: 0.5em;
+  max-width: 260px;
+  min-width: 260px;
+}
+
+.ad-detail {
+  max-width: 60em;
+  min-width: 20em;
+}
+
+.announcement {
+  border: 0;
+  margin-bottom: 1em;
+}
+
+.announcement:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.contact-info{
+  max-width: 260px;
+  min-width: 260px;
+}
+.category-element header {
+  background-color: #f0f0f0;
+  border-bottom: 2px solid #c2c2c2;
+  margin-bottom: 0.3em;
+}
+.subcategory-element {
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+}
