@@ -1,0 +1,101 @@
+{
+  "categories": [
+    {
+      "name": "Compra / Venta",
+      "subs": [
+        "Celulares/Líneas/Accesorios",
+        "Reproductor MP3/MP4/IPOD",
+        "Reproductor DVD/VCD/DVR",
+        "Televisor",
+        "Cámara Foto/Video",
+        "Aire Acondicionado",
+        "Consola Videojuego/Juegos",
+        "Satélite",
+        "Electrodomésticos",
+        "Muebles/Decoración",
+        "Ropa/Zapato/Accesorios",
+        "Intercambio/Regalo",
+        "Mascotas/Animales",
+        "Divisas",
+        "Libros/Revistas",
+        "Joyas/Relojes",
+        "Antiguedades/Colección",
+        "Implementos Deportivos",
+        "Arte",
+        "Otros"
+      ]
+    },
+    {
+      "name": "Empleos",
+      "subs": ["Ofertas de empleo", "Busco empleo"]
+    },
+
+    {
+      "name": "Autos",
+      "subs": [
+        "Carros",
+        "Motos",
+        "Bicicletas",
+        "Piezas/Accesorios",
+        "Alquiler",
+        "Mecánico",
+        "Otros"
+      ]
+    },
+
+    {
+      "name": "Servicios",
+      "subs": [
+        "Clases/Cursos",
+        "Informática/Programación",
+        "Películas/Series/Videos",
+        "Limpieza/Doméstico",
+        "Foto/Video",
+        "Construcción/Mantenimiento",
+        "Reparación Electrónica",
+        "Peluquería/Barbería/Belleza",
+        "Restaurantes/Gastronomía",
+        "Diseño/Decoración",
+        "Música/Animación/Shows",
+        "Relojero/Joyero",
+        "Gimnasio/Masaje/Entrenador",
+        "Otros"
+      ]
+    },
+    {
+      "name": "Vivienda",
+      "subs": [
+        "Compra/Venta",
+        "Permuta",
+        "Alquiler a cubanos",
+        "Alquiler a extranjeros",
+        "Casa en la playa"
+      ]
+    },
+
+    {
+      "name": "Computadoras",
+      "subs": [
+        "PC de Escritorio",
+        "Laptop",
+        "Microprocesador",
+        "Monitor",
+        "Motherboard",
+        "Memoria RAM/FLASH",
+        "Disco Duro Interno/Externo",
+        "Chasis/Fuente",
+        "Tarjeta de Video",
+        "Tarjeta de Sonido/Bocinas",
+        "Quemador/Lector DVD/CD",
+        "Backup/UPS",
+        "Impresora/Cartuchos",
+        "Modem/Wifi/Red",
+        "Webcam/Microf/Audífono",
+        "Teclado/Mouse",
+        "Internet/Email",
+        "CD/DVD Virgen",
+        "Otros"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title><%= @view_module.title(@view_template, assigns) %></title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="demo">
+        <a href="/" class="brand">
+          <span>Anuncios Clasificados</span>
+        </a>
+        <input id="bmenub" type="checkbox" class="show">
+        <label for="bmenub" class="burger pseudo button">&#9776;</label>
+        <div class="menu">
+          <%= link "Nuevo Anuncio", to: Routes.advertisement_path(@conn, :new), class: "button" %>
+        </div>
+      </nav>
+    </header>
+    <main role="main">
+      <%= @inner_content %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<div class="grid grid-center">
+  <div class="col col-6">
+    <%= form_for @changeset, @action, [multipart: true], fn f -> %>
+        <%= if @changeset.action do %>
+          <div class="warning">
+            <p>Oops, something went wrong! Please check the errors below.</p>
+          </div>
+        <% end %>
+
+        <fieldset class="grid">
+          <div class="col">
+            <%= label f, :title, "Título" %>
+            <%= text_input f, :title, required: true %>
+            <%= error_tag f, :title %>
+          </div>
+        </fieldset>
+
+        <fieldset class="grid">
+          <div class="col">
+            <%= label f, :subcategory_id , "Categoría" %>
+            <%= select f, :subcategory_id , @subcategories, prompt: "Escoje una categoría", required: true %>
+            <%= error_tag f, :subcategory %>
+          </div>
+          <div class="col">
+            <%= label f, :price, "Precio" %>
+            <%= number_input f, :price %>
+            <%= error_tag f, :price %>
+          </div>
+        </fieldset>
+
+        <fieldset class="grid">
+          <div class="col">
+            <%= label f, :description, "Descripción" %>
+            <%= textarea f, :description %>
+            <%= error_tag f, :description %>
+          </div>
+        </fieldset>
+
+
+        <fieldset class="grid grid-around">
+          <div class="drop-element col">
+          <label class="dropimage">
+              <%= file_input f, :image1 %>
+          </label>
+          </div>
+          <div class="drop-element col">
+          <label class="dropimage">
+              <%= file_input f, :image2 %>
+          </label>
+          </div>
+          <div class="drop-element col">
+          <label class="dropimage">
+              <%= file_input f, :image3 %>
+          </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="grid">
+          <div class="col">
+            <%= label f, :email, "Correo" %>
+            <%= email_input f, :email %>
+            <%= error_tag f, :email %>
+          </div>
+          <div class="col">
+            <%= label f, :phone, "Teléfono" %>
+            <%= text_input f, :phone %>
+            <%= error_tag f, :phone %>
+          </div>
+        </fieldset>
+
+        <div class="grid grid-end">
+          <div class="col col-1">
+            <%= submit "Crear"%>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

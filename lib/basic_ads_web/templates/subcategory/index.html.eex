@@ -1,0 +1,25 @@
+<h1>Listing Ads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for advertisement <- @ads do %>
+    <tr>
+      <td><%= advertisement.title %></td>
+      <td><%= advertisement.description %></td>
+      <td><%= advertisement.subcategory.category.name %> - <%= advertisement.subcategory.name %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.advertisement_path(@conn, :show, advertisement) %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

@@ -1,0 +1,30 @@
+<div class="grid grid-center">
+  <div class="col col-10">
+    <%= for advertisement <- @ads do %>
+      <div class="card announcement">
+          <div class="grid">
+            <div class="col col-8">
+              <%= if advertisement.price do %>
+                <span class="label">$ <%= advertisement.price %></span>
+              <% end %>
+              <%= link String.slice(advertisement.title, 0..50) <> "...", to: Routes.advertisement_path(@conn, :show, advertisement) %>
+              <%= if advertisement.image1 || advertisement.image2 || advertisement.image3 do %>
+                <span> &#128247; </span>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= if advertisement.phone do %>
+                <span>&#128241; <%= advertisement.phone %> </span>
+              <% end %>
+              <%= if advertisement.email do %>
+                <span>&#128231; <%= advertisement.email %> </span>
+              <% end %>
+            </div>
+          </div>
+        <footer>
+          <%= String.slice(advertisement.description, 0..150) <> "..." %>
+        </footer>
+      </div>
+    <% end %>
+  </div>
+</div>

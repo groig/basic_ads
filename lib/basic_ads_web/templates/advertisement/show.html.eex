@@ -1,0 +1,43 @@
+<div class="grid grid-center">
+  <div class="col col-6 ad-detail">
+    <div class="card">
+      <header>
+        <%= if @advertisement.price do %>
+          <span class="label">$ <%= @advertisement.price %></span>
+        <% end %>
+        <%= @advertisement.title %>
+      </header>
+      <p>
+        <%= @advertisement.description %>
+      </p>
+    </div>
+  </div>
+  <div class="col col-2 contact-info">
+    <div class="card">
+      <header>
+        Información de contacto
+      </header>
+      <footer>
+        <p>
+          <span>&#128241; 
+            <%= if @advertisement.phone do %>
+              <%= @advertisement.phone %>
+              <% else %>
+                -
+            <% end %>
+          </span>
+        </p>
+        <p>
+          <span>&#128231;
+            <%= if @advertisement.email do %>
+              <%= @advertisement.email %>
+              <% else %>
+                -
+            <% end %>
+          </span>
+        </p>
+
+      </footer>
+    </div>
+  </div>
+</div>
