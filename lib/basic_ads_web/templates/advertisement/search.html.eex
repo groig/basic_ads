@@ -1,0 +1,10 @@
+<form action="" method="get" accept-charset="utf-8">
+<div class="grid">
+  <div class="col col-10">
+    <input type="text" value="<%= Map.get(@conn.query_params, "q") %>" name="q" id="ad-search" placeholder="Buscar Anuncios"/>
+  </div>
+  <div class="col col-2">
+    <input type="submit" value="Buscar" class="button" />
+  </div>
+</div>
+</form>

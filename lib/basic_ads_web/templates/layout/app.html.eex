@@ -22,6 +22,13 @@
       </nav>
     </header>
     <main role="main">
+      <%= if assigns[:show_search] do %>
+        <div class="grid grid-center search-section">
+          <div class="col col-6">
+            <%= render BasicAdsWeb.AdvertisementView, "search.html", conn: @conn %>
+          </div>
+        </div>
+      <% end %>
       <%= @inner_content %>
     </main>
   </body>

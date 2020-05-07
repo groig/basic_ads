@@ -13,6 +13,15 @@ defmodule BasicAds.Ad do
     Repo.all(Advertisement) |> Repo.preload(subcategory: :category)
   end
 
+  def list_ads(query) do
+    Repo.all(
+      from a in Advertisement,
+        where: ilike(a.title, ^"%#{query}%") or ilike(a.description, ^"%#{query}%"),
+        select: a
+    )
+    |> Repo.preload(subcategory: :category)
+  end
+
   def get_advertisement!(id),
     do: Repo.get!(Advertisement, id) |> Repo.preload(subcategory: :category)
 
