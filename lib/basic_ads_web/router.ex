@@ -15,11 +15,9 @@ defmodule BasicAdsWeb.Router do
 
   scope "/", BasicAdsWeb do
     pipe_through :browser
+    get "/ads/cat/:id", AdvertisementController, :index_category
+    get "/ads/sub/:id", AdvertisementController, :index_subcategory
     resources "/ads", AdvertisementController, only: [:index, :new, :create, :show]
-    get "/sub/:id", SubcategoryController, :show
-    get "/cat/:id", CategoryController, :show
-    get "/sub", CategoryController, :index
-    get "/cat", CategoryController, :index
     get "/", CategoryController, :index
   end
 

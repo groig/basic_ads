@@ -1,0 +1,10 @@
+<div class="card category-element col">
+  <header>
+    <%= link @category.name, to: Routes.advertisement_path(@conn, :index_category, @category.id) %>
+  </header>
+  <%= for sub <- @category.subcategories do %>
+  <div class="subcategory-element">
+    <%= link sub.name, to: Routes.advertisement_path(@conn, :index_subcategory, sub.id) %>
+  </div>
+  <% end %>
+</div>

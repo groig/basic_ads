@@ -15,6 +15,21 @@ defmodule BasicAdsWeb.AdvertisementController do
     render(conn, "index.html", ads: ads)
   end
 
+  def index_category(conn, %{"id" => category_id}) do
+    ads =
+      category_id
+      |> Ad.get_category!()
+      |> Map.get(:subcategories)
+      |> Enum.flat_map(fn subcategory -> subcategory.ads end)
+
+    render(conn, "index.html", ads: ads)
+  end
+
+  def index_subcategory(conn, %{"id" => subcategory_id}) do
+    subcategory = Ad.get_subcategory!(subcategory_id)
+    render(conn, "index.html", ads: subcategory.ads)
+  end
+
   def new(conn, _params) do
     changeset = Ad.change_advertisement(%Advertisement{})
     render(conn, "new.html", changeset: changeset)

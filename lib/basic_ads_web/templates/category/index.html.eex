@@ -1,14 +1,5 @@
 <div class="grid grid-around">
   <%= for category <- @categories do %>
-    <div class="card category-element col">
-      <header>
-        <a href="/"><%= category.name %></a>
-      </header>
-      <%= for sub <- category.subcategories do %>
-      <div class="subcategory-element">
-        <a href="/"><%= sub.name %></a>
-      </div>
-      <% end %>
-    </div>
+    <%= render @view_module, "category_card.html", category: category, conn: @conn %>
   <% end %>
 </div>

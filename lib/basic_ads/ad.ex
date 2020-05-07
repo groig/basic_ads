@@ -7,7 +7,7 @@ defmodule BasicAds.Ad do
   alias BasicAds.Repo
   alias BasicAds.Ad.Category
 
-  alias BasicAds.Ad.Advertisement
+  alias BasicAds.Ad.{Advertisement, Category, Subcategory}
 
   def list_ads do
     Repo.all(Advertisement) |> Repo.preload(subcategory: :category)
@@ -15,6 +15,12 @@ defmodule BasicAds.Ad do
 
   def get_advertisement!(id),
     do: Repo.get!(Advertisement, id) |> Repo.preload(subcategory: :category)
+
+  def get_category!(id),
+    do: Repo.get!(Category, id) |> Repo.preload(subcategories: :ads)
+
+  def get_subcategory!(id),
+    do: Repo.get!(Subcategory, id) |> Repo.preload(:ads)
 
   def create_advertisement(attrs \\ %{}) do
     %Advertisement{}
