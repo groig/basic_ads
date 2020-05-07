@@ -1,6 +1,6 @@
 <div class="card announcement">
     <div class="grid">
-      <div class="col col-8">
+      <div class="col col-8 col-md col-sm">
         <%= if @advertisement.price do %>
           <span class="label">$ <%= @advertisement.price %></span>
         <% end %>
@@ -9,7 +9,7 @@
           <span> &#128247; </span>
         <% end %>
       </div>
-      <div class="col">
+      <div class="col col-md col-sm">
         <%= if @advertisement.phone do %>
           <span>&#128241; <%= @advertisement.phone %> </span>
         <% end %>

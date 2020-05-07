@@ -1,4 +1,4 @@
-<div class="card category-element col">
+<div class="card category-element col col-md col-sm">
   <header>
     <%= link @category.name, to: Routes.advertisement_path(@conn, :index_category, @category.id) %>
   </header>

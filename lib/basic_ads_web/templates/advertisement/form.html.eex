@@ -1,5 +1,5 @@
 <div class="grid grid-center">
-  <div class="col col-6">
+  <div class="col col-6 col-sm col-md">
     <%= form_for @changeset, @action, [multipart: true], fn f -> %>
         <%= if @changeset.action do %>
           <div class="warning">
@@ -16,12 +16,12 @@
         </fieldset>
 
         <fieldset class="grid">
-          <div class="col">
+          <div class="col col-sm col-md">
             <%= label f, :subcategory_id , "Categoría" %>
             <%= select f, :subcategory_id , @subcategories, prompt: "Escoje una categoría", required: true %>
             <%= error_tag f, :subcategory %>
           </div>
-          <div class="col">
+          <div class="col col-sm col-md">
             <%= label f, :price, "Precio" %>
             <%= number_input f, :price %>
             <%= error_tag f, :price %>
@@ -56,12 +56,12 @@
         </fieldset>
 
         <fieldset class="grid">
-          <div class="col">
+          <div class="col col-sm col-md">
             <%= label f, :email, "Correo" %>
             <%= email_input f, :email %>
             <%= error_tag f, :email %>
           </div>
-          <div class="col">
+          <div class="col col-sm col-md">
             <%= label f, :phone, "Teléfono" %>
             <%= text_input f, :phone %>
             <%= error_tag f, :phone %>
