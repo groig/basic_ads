@@ -12,6 +12,7 @@ defmodule BasicAds.Ad.Advertisement do
     field :image1, :string
     field :image2, :string
     field :image3, :string
+    field :search_tsv, TSVectorType
     belongs_to :subcategory, Subcategory
 
     timestamps()
@@ -34,3 +35,4 @@ defmodule BasicAds.Ad.Advertisement do
     |> validate_required([:title, :subcategory_id])
   end
 end
+

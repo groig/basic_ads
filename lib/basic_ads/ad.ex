@@ -9,26 +9,33 @@ defmodule BasicAds.Ad do
 
   alias BasicAds.Ad.{Advertisement, Category, Subcategory}
 
+  defmacro tsquery(field, text) do
+    quote do
+      fragment("?::tsvector @@ to_tsquery('spanish', ?)", unquote(field), unquote(text))
+    end
+  end
+
+  defp split_names_for_tsquery(text) do
+    String.split(text || "", " ", trim: true)
+    # # |> Enum.reject(fn text -> Regex.match?(~r/\(|\)\[|\]\{|\}/, text) end)
+    |> Enum.map(fn token -> token <> ":*" end)
+    |> Enum.intersperse(" & ")
+    # |> IO.inspect
+    |> Enum.join()
+  end
+
   defp ad_query do
     Advertisement |> order_by(desc: :inserted_at) |> preload(subcategory: :category)
   end
 
-  defp ad_search(query, search_term) do
-    where(
-      query,
-      [ad],
-      ilike(ad.title, ^"%#{search_term}%") or ilike(ad.description, ^"%#{search_term}%")
-    )
-  end
-
-  def list_ads do
-    ad_query() |> Repo.all()
-  end
-
-  def list_ads(search_term) do
-    ad_query()
-    |> ad_search(search_term)
-    |> Repo.all()
+  defp ad_search(query, text) do
+    n_text = split_names_for_tsquery(text)
+    where(query, [ad], tsquery(ad.search_tsv, ^n_text))
+    # where(
+    #   query,
+    #   [ad],
+    #   ilike(ad.title, ^"%#{text}%") or ilike(ad.description, ^"%#{text}%")
+    # )
   end
 
   defp ad_join(query, category_id) do
@@ -36,27 +43,23 @@ defmodule BasicAds.Ad do
     |> where([ad, sub], sub.category_id == ^category_id)
   end
 
-  def list_ads_category(category_id) do
-    ad_query() |> ad_join(category_id) |> Repo.all()
+  def list_ads(text) do
+    ad_query()
+    |> ad_search(text)
+    |> Repo.all()
   end
 
-  def list_ads_category(category_id, search_term) do
+  def list_ads_category(category_id, text) do
     ad_query()
     |> ad_join(category_id)
-    |> ad_search(search_term)
+    |> ad_search(text)
     |> Repo.all()
   end
 
-  def list_ads_subcategory(subcategory_id) do
+  def list_ads_subcategory(subcategory_id, text) do
     ad_query()
     |> where([ad], ad.subcategory_id == ^subcategory_id)
-    |> Repo.all()
-  end
-
-  def list_ads_subcategory(subcategory_id, search_term) do
-    ad_query()
-    |> where([ad], ad.subcategory_id == ^subcategory_id)
-    |> ad_search(search_term)
+    |> ad_search(text)
     |> Repo.all()
   end
 

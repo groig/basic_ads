@@ -16,38 +16,20 @@ defmodule BasicAdsWeb.AdvertisementController do
   end
 
   def index(conn, _params) do
-    search_term = Map.get(conn.query_params, "s")
-
-    ads =
-      case search_term do
-        nil -> Ad.list_ads()
-        search_term -> Ad.list_ads(search_term)
-      end
-
+    text = Map.get(conn.query_params, "s")
+    ads = Ad.list_ads(text)
     render(conn, "index.html", ads: ads)
   end
 
   def index_category(conn, %{"id" => category_id}) do
-    search_term = Map.get(conn.query_params, "s")
-
-    ads =
-      case search_term do
-        nil -> Ad.list_ads_category(category_id)
-        search_term -> Ad.list_ads_category(category_id, search_term)
-      end
-
+    text = Map.get(conn.query_params, "s")
+    ads = Ad.list_ads_category(category_id, text)
     render(conn, "index.html", ads: ads)
   end
 
   def index_subcategory(conn, %{"id" => subcategory_id}) do
-    search_term = Map.get(conn.query_params, "s")
-
-    ads =
-      case search_term do
-        nil -> Ad.list_ads_subcategory(subcategory_id)
-        search_term -> Ad.list_ads_subcategory(subcategory_id, search_term)
-      end
-
+    text = Map.get(conn.query_params, "s")
+    ads = Ad.list_ads_subcategory(subcategory_id, text)
     render(conn, "index.html", ads: ads)
   end
 
