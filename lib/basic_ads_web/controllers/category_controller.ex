@@ -11,6 +11,6 @@ defmodule BasicAdsWeb.CategoryController do
 
   def index(conn, _params) do
     categories = Ad.list_categories()
-    render(conn, "index.html", categories: categories)
+    render(conn, "index.html", categories: categories, main_page: true)
   end
 end

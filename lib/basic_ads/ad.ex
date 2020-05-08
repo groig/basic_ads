@@ -9,17 +9,55 @@ defmodule BasicAds.Ad do
 
   alias BasicAds.Ad.{Advertisement, Category, Subcategory}
 
-  def list_ads do
-    Repo.all(Advertisement) |> Repo.preload(subcategory: :category)
+  defp ad_query do
+    Advertisement |> order_by(desc: :inserted_at) |> preload(subcategory: :category)
   end
 
-  def list_ads(query) do
-    Repo.all(
-      from a in Advertisement,
-        where: ilike(a.title, ^"%#{query}%") or ilike(a.description, ^"%#{query}%"),
-        select: a
+  defp ad_search(query, search_term) do
+    where(
+      query,
+      [ad],
+      ilike(ad.title, ^"%#{search_term}%") or ilike(ad.description, ^"%#{search_term}%")
     )
-    |> Repo.preload(subcategory: :category)
+  end
+
+  def list_ads do
+    ad_query() |> Repo.all()
+  end
+
+  def list_ads(search_term) do
+    ad_query()
+    |> ad_search(search_term)
+    |> Repo.all()
+  end
+
+  defp ad_join(query, category_id) do
+    join(query, :left, [ad], sub in Subcategory, on: sub.id == ad.subcategory_id)
+    |> where([ad, sub], sub.category_id == ^category_id)
+  end
+
+  def list_ads_category(category_id) do
+    ad_query() |> ad_join(category_id) |> Repo.all()
+  end
+
+  def list_ads_category(category_id, search_term) do
+    ad_query()
+    |> ad_join(category_id)
+    |> ad_search(search_term)
+    |> Repo.all()
+  end
+
+  def list_ads_subcategory(subcategory_id) do
+    ad_query()
+    |> where([ad], ad.subcategory_id == ^subcategory_id)
+    |> Repo.all()
+  end
+
+  def list_ads_subcategory(subcategory_id, search_term) do
+    ad_query()
+    |> where([ad], ad.subcategory_id == ^subcategory_id)
+    |> ad_search(search_term)
+    |> Repo.all()
   end
 
   def get_advertisement!(id),
