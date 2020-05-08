@@ -1,6 +1,6 @@
 <div class="card announcement">
     <div class="grid">
-      <div class="col col-8 col-md col-sm">
+      <div class="col col-6 col-md col-sm">
         <%= if @advertisement.price do %>
           <span class="label">$ <%= @advertisement.price %></span>
         <% end %>
@@ -16,6 +16,9 @@
         <%= if @advertisement.email do %>
           <span>&#128231; <%= @advertisement.email %> </span>
         <% end %>
+      </div>
+      <div class="col col-2 col-md col-sm">
+        <%= Timex.from_now(@advertisement.inserted_at, "es") %>
       </div>
     </div>
   <footer>
