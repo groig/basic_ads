@@ -36,25 +36,6 @@
           </div>
         </fieldset>
 
-
-        <fieldset class="grid grid-around">
-          <div class="drop-element col">
-          <label class="dropimage">
-              <%= file_input f, :image1 %>
-          </label>
-          </div>
-          <div class="drop-element col">
-          <label class="dropimage">
-              <%= file_input f, :image2 %>
-          </label>
-          </div>
-          <div class="drop-element col">
-          <label class="dropimage">
-              <%= file_input f, :image3 %>
-          </label>
-          </div>
-        </fieldset>
-
         <fieldset class="grid">
           <div class="col col-sm col-md">
             <%= label f, :email, "Correo" %>
@@ -65,6 +46,24 @@
             <%= label f, :phone, "Teléfono" %>
             <%= text_input f, :phone %>
             <%= error_tag f, :phone %>
+          </div>
+        </fieldset>
+
+        <fieldset class="grid grid-around">
+          <div class="drop-element col col-md col-sm">
+          <label class="dropimage">
+              <%= file_input f, :image1 %>
+          </label>
+          </div>
+          <div class="drop-element col col-md col-sm">
+          <label class="dropimage">
+              <%= file_input f, :image2 %>
+          </label>
+          </div>
+          <div class="drop-element col col-md col-sm">
+          <label class="dropimage">
+              <%= file_input f, :image3 %>
+          </label>
           </div>
         </fieldset>
 
