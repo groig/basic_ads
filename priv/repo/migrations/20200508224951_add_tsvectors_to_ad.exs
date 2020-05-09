@@ -6,8 +6,16 @@ defmodule BasicAds.Repo.Migrations.AddTsvectorsToAd do
       add(:search_tsv, :tsvector)
     end
 
+    execute("CREATE EXTENSION unaccent;")
+
+    execute("CREATE TEXT SEARCH CONFIGURATION es ( COPY = spanish );")
+
     execute(
-      "UPDATE ads SET search_tsv = to_tsvector('spanish', COALESCE(title, '') || ' ' || COALESCE(description, ''))"
+      "ALTER TEXT SEARCH CONFIGURATION es ALTER MAPPING FOR hword, hword_part, word WITH unaccent, spanish_stem;"
+    )
+
+    execute(
+      "UPDATE ads SET search_tsv = to_tsvector('es', coalesce(title, '') || ' ' || coalesce(description, ''))"
     )
 
     create(index(:ads, [:search_tsv], using: :gin))

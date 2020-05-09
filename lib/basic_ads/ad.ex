@@ -11,7 +11,7 @@ defmodule BasicAds.Ad do
 
   defmacro tsquery(field, text) do
     quote do
-      fragment("?::tsvector @@ to_tsquery('spanish', ?)", unquote(field), unquote(text))
+      fragment("?::tsvector @@ to_tsquery('es', unaccent(?))", unquote(field), unquote(text))
     end
   end
 
